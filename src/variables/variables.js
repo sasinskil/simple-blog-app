@@ -1,0 +1,1 @@
+export const APIUrl = "https://fir-vue-blog.firebaseio.com/posts.json";
