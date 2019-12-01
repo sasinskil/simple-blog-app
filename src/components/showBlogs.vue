@@ -71,7 +71,9 @@ export default {
     computed: {
       filteredBlogs() {
            return this.blogs.filter((blog) => {
-            return blog.title.match(this.search);
+               const currentBlogTitle = blog.title.toLowerCase();
+               const inputSearchValue = this.search.toLowerCase();
+            return currentBlogTitle.match(inputSearchValue);
           });
       }
   },
