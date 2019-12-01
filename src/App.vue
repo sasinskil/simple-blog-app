@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="app-container">
     <h1>Simple blog app</h1>
+    <router-view></router-view>
   </div>
 </template>
 
