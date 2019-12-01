@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { APIUrl } from '../variables/variables';
 
 export default {
    name: "singleBlog",
