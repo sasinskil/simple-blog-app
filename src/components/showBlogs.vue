@@ -1,5 +1,5 @@
 <template>
-  <div id="showBlogs" class="main-container--show">
+  <div v-theme:column="theme" id="showBlogs" class="main-container--show">
     <div class="theme-switch">
           <p class="wrapper">
               <input 
@@ -27,10 +27,10 @@
           <label for="search"><font-awesome-icon class="search-icon icon" icon="search" /></label>
       </p>
       <ul class="blog__list">
-          <li v-for="blog in filteredBlogs" :key="blog.id" class="blog__item">
+          <li v-theme="theme" v-for="blog in filteredBlogs" :key="blog.id" class="blog__item">
                 <article class="blog__wrapper">
-                    <h2 class="blog__single-title">{{blog.title}}</h2>
-                    <p class="blog__paragraph">{{blog.content}}</p>
+                    <h2 class="blog__single-title">{{blog.title | to-uppercase}}</h2>
+                    <p class="blog__paragraph">{{blog.content | snippet}}</p>
                 </article>
               <router-link class="blog__single-link" :to="`/blog/${blog.id}`">Read more</router-link>
           </li>

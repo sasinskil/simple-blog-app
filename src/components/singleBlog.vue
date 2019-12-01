@@ -1,6 +1,6 @@
 <template>
   <nav id="singleBlog" class="main-container--blog">
-    <h1>{{blog.title}}</h1>
+    <h1 v-rainbow>{{blog.title}}</h1>
       <p>{{blog.content}}</p>
       <p><strong>Categories: </strong>
         <ul>
