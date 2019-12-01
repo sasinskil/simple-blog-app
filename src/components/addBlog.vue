@@ -92,6 +92,7 @@ import { APIUrl } from '../variables/variables';
 import modal from '../components/modal.vue';
 
 const today = new Date().toISOString().slice(0,10);
+const warning = "Errors have occurred while filling in the form!";
 
 export default {
   name: "addBlog",
@@ -112,7 +113,7 @@ export default {
       errors: [],
       visible: false,
       hideErrors: false,
-      bodyHere: "Errors have occurred while filling in the form!"
+      bodyHere: warning,
     };
   },
   methods: {
