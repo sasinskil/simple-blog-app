@@ -1,14 +1,18 @@
 <template>
   <div id="app" class="app-container">
-    <h1>Simple blog app</h1>
+    <app-header></app-header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import headerBlogs from './components/headerBlogs.vue';
 
 export default {
   name: "app",
+  components: {
+    'app-header': headerBlogs,
+  },
   data() {
     return {
     }
