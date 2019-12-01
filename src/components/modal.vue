@@ -1,8 +1,8 @@
 <template>
   <div v-if="show" class="modal">
     <div class="modal__box">
-      <h1>{{ content }}</h1>
-      <button @click="closeModal">Show errors</button>
+      <h1 class="modal__title">{{ content }}</h1>
+      <button class="modal__button" @click="closeModal">Show errors</button>
     </div>
   </div>
 </template>
@@ -54,13 +54,12 @@ export default {
     color: #000;
     box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.5);
   }
-}
 
-h1 {
+  &__title {
     margin: 0 0 2.5rem 0;
-}
+  }
 
-button {
+  &__button {
     background: #2c3e50;
     border: 1px solid #2c3e50;
     cursor: pointer;
@@ -74,4 +73,5 @@ button {
       color: #2c3e50;
     }
   }
+}
 </style>

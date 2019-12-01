@@ -189,11 +189,6 @@ export default {
     100% {
         transform: rotate(180deg);
     }
-
-    // 100% {
-    //     transform: rotate(0deg);
-    // }
-    
 }
 
 .fade-enter-active,
