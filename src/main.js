@@ -4,7 +4,7 @@ import VueResource from "vue-resource";
 import VueRouter from "vue-router";
 import Routes from './routes';
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 Vue.config.productionTip = false;
@@ -17,7 +17,7 @@ const router = new VueRouter({
   mode: 'history'
 });
 
-library.add(faMoon);
+library.add(faMoon, faSun, faSearch);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 new Vue({
