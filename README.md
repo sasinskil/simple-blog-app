@@ -32,7 +32,7 @@ npm run test
 - HTML/HTML5,
 - SASS,
 - JavaScript/ES6,
-- Vue JS,
+- Vue JS (router, resource),
 - [Font Awesome](https://fontawesome.com/icons?d=gallery)
 - NPM Scripts
 
