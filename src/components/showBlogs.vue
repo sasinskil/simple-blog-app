@@ -26,6 +26,12 @@
           <input class="search-input" type="text" id="search" name="search" v-model="search" placeholder="search blogs">
           <label for="search"><font-awesome-icon class="search-icon icon" icon="search" /></label>
       </p>
+    <div class="lds-ring" v-if="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
       <ul class="blog__list">
           <li v-theme="theme" v-for="blog in filteredBlogs" :key="blog.id" class="blog__item">
                 <article class="blog__wrapper">
@@ -54,15 +60,18 @@ export default {
         theme: 'white',
 
         timer: '',
+        loading: false,
     }
   },
 
   methods: {
 
       getBlogs() {
+          this.loading = true;
            this.$http.get(`${APIUrl}`)
              .then(resp => resp.json())
              .then(data => {
+                this.loading = false;
                 const blogsArray = [];
                 for (let key in data) {
                     data[key].id = key;
@@ -102,6 +111,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .main-container--show {
     position: relative;
     width: 100%;
@@ -253,4 +272,35 @@ input[type="radio"]:checked + label {
 .icon {
     cursor: pointer;
 }
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  margin-top: 5rem;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #000;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #000 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+
 </style>
