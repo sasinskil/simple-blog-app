@@ -32,7 +32,10 @@
                     <h2 class="blog__single-title">{{blog.title | to-uppercase}}</h2>
                     <p class="blog__paragraph">{{blog.content | snippet}}</p>
                 </article>
-              <router-link class="blog__single-link" :to="`/blog/${blog.id}`">Read more</router-link>
+                <div class="blog__more-wrapper">
+                    <router-link class="blog__single-link" :to="`/blog/${blog.id}`">Read more</router-link>
+                    <span class="blog__created-date">{{blog.createdDate}}</span>
+                </div>
           </li>
       </ul>
   </div>
@@ -86,6 +89,7 @@ export default {
   },
 
  computed: {
+
     filteredBlogs() {
       return this.blogs.filter((blog) => {
         const currentBlogTitle = blog.title.toLowerCase();
@@ -133,6 +137,16 @@ export default {
     padding-bottom: 1rem;
 }
 
+.blog__more-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.blog__created-date {
+    opacity: 0.5;
+}
+
 .blog__list {
     list-style-type: none;
     padding: 0;
@@ -175,10 +189,6 @@ export default {
     position: relative;
 }
 
-.wrapper {
-    position: relative;
-}
-
 .sun-label::after {
     position: absolute;
     content: "";
@@ -199,6 +209,7 @@ export default {
 
 .wrapper {
     width: 100%;
+    position: relative;
 
     &-search--blogs {
         display: flex;
@@ -213,13 +224,15 @@ export default {
         height: 20px;
         position: absolute;
         top: 30px;
-        right: 70px;
+        right: 80px;
 
     }
 }
 
 
 .search-input {
+    width: 100%;
+    max-width: 200px;
     background: none;
     border: none;
     border-bottom: 1px solid #000;
