@@ -49,33 +49,50 @@ export default {
         search: '',
         wide: '',
         theme: 'white',
+
+        timer: '',
     }
   },
 
-  created() {
-      this.$http.get(`${APIUrl}`)
-      .then(resp => resp.json())
-      .then(data => {
-         const blogsArray = [];
-         for (let key in data) {
-             data[key].id = key;
-             blogsArray.push(data[key]);
-         }
-         this.blogs = blogsArray;
-      })
-      .catch(err => {
-          console.log(err)
-          })
+  methods: {
+
+      getBlogs() {
+           this.$http.get(`${APIUrl}`)
+             .then(resp => resp.json())
+             .then(data => {
+                const blogsArray = [];
+                for (let key in data) {
+                    data[key].id = key;
+                    blogsArray.push(data[key]);
+                }
+                this.blogs = blogsArray;
+            })
+            .catch(err => {
+                console.log(err)
+                })
+            }
   },
 
-    computed: {
-      filteredBlogs() {
-           return this.blogs.filter((blog) => {
-               const currentBlogTitle = blog.title.toLowerCase();
-               const inputSearchValue = this.search.toLowerCase();
-            return currentBlogTitle.match(inputSearchValue);
-          });
-      }
+  created() {
+      this.getBlogs();
+      this.timer = setInterval(() =>
+        {
+           this.getBlogs()
+        },300000);
+  },
+
+  beforeDestroy() {
+      clearInterval(this.timer);
+  },
+
+ computed: {
+    filteredBlogs() {
+      return this.blogs.filter((blog) => {
+        const currentBlogTitle = blog.title.toLowerCase();
+        const inputSearchValue = this.search.toLowerCase();
+        return currentBlogTitle.match(inputSearchValue);
+      });
+    }
   },
 };
 </script>
